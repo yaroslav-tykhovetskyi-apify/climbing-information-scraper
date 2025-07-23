@@ -1,8 +1,8 @@
 {
 	"actorSpecification": 1,
 	"name": "climbing-information-scraper",
-	"title": "Project Cheerio Crawler Typescript",
-	"description": "Crawlee and Cheerio project in typescript.",
+	"title": "Climbing information scraper",
+	"description": "Actor meant to make the task of finding climbing sites easier.",
 	"version": "0.0",
 	"meta": {
 		"templateId": "ts-crawlee-cheerio"
