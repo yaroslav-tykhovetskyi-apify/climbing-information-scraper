@@ -1,49 +1,35 @@
-// Apify SDK - toolkit for building Apify Actors (Read more at https://docs.apify.com/sdk/js/)
-import { Actor } from 'apify';
-// Crawlee - web scraping and browser automation library (Read more at https://crawlee.dev)
-import { CheerioCrawler, Dataset } from 'crawlee';
+import { Actor, log } from 'apify';
+import { CheerioCrawler } from 'crawlee';
 
-// this is ESM project, and as such, it requires you to specify extensions in your relative imports
-// read more about this here: https://nodejs.org/docs/latest-v18.x/api/esm.html#mandatory-file-extensions
-// note that we need to use `.js` even when inside TS files
-// import { router } from './routes.js';
+import { BASE_THE_CRAG_URL, Routes } from './constants.js';
+import { router } from './routes.js';
+import type { ActorInput } from './types.js';
 
-interface Input {
-    startUrls: {
-        url: string;
-        method?: 'GET' | 'HEAD' | 'POST' | 'PUT' | 'DELETE' | 'TRACE' | 'OPTIONS' | 'CONNECT' | 'PATCH';
-        headers?: Record<string, string>;
-        userData: Record<string, unknown>;
-    }[];
-    maxRequestsPerCrawl: number;
-}
-
-// The init() call configures the Actor for its environment. It's recommended to start every Actor with an init()
+log.info('Starting the actor.')
 await Actor.init();
 
-// Structure of input is defined in input_schema.json
-const { startUrls = ['https://apify.com'], maxRequestsPerCrawl = 100 } =
-    (await Actor.getInput<Input>()) ?? ({} as Input);
+const input = await Actor.getInput<ActorInput>();
+
+if (!input) {
+    log.error('Received invalid user input, cannot proceed');
+    throw new Error('Received invalid input.');
+}
+
+const { areaQuery, maxRequestsPerCrawl } = input;
 
 const proxyConfiguration = await Actor.createProxyConfiguration();
 
 const crawler = new CheerioCrawler({
     proxyConfiguration,
+    requestHandler: router,
     maxRequestsPerCrawl,
-    requestHandler: async ({ enqueueLinks, request, $, log }) => {
-        log.info('enqueueing new URLs');
-        await enqueueLinks();
-
-        // Extract title from the page.
-        const title = $('title').text();
-        log.info(`${title}`, { url: request.loadedUrl });
-
-        // Save url and title to Dataset - a table-like storage.
-        await Dataset.pushData({ url: request.loadedUrl, title });
-    },
 });
 
-await crawler.run(startUrls);
+await crawler.addRequests([{
+    url: `${BASE_THE_CRAG_URL}/en/climbing/europe/search?S=${areaQuery}`,
+    label: Routes.SEARCH_PAGE,
+}])
+await crawler.run();
 
-// Gracefully exit the Actor process. It's recommended to quit all Actors with an exit()
+log.info('Exiting the actor.')
 await Actor.exit();

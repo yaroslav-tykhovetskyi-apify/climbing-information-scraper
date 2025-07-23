@@ -3,16 +3,12 @@
     "type": "object",
     "schemaVersion": 1,
     "properties": {
-        "startUrls": {
-            "title": "Start URLs",
-            "type": "array",
-            "description": "URLs to start with.",
-            "editor": "requestListSources",
-            "prefill": [
-                {
-                    "url": "https://apify.com"
-                }
-            ]
+        "areaQuery": {
+            "title": "Area query",
+            "type": "string",
+            "description": "Area to crawl for crags and routes",
+            "editor": "textfield",
+            "example": "Czechia"
         },
         "maxRequestsPerCrawl": {
             "title": "Max Requests per Crawl",
@@ -20,5 +16,8 @@
             "description": "Maximum number of requests that can be made by this crawler.",
             "default": 100
         }
-    }
+    },
+    "required": [
+        "areaQuery"
+    ]
 }
