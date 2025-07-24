@@ -20,12 +20,11 @@ router.addHandler<AreasSearchPageData>(Routes.AREAS_SEARCH_PAGE, async ({ $, cra
 })
 
 router.addHandler(Routes.FILTERED_ROUTES_PAGE, async ({ $, crawler, request }) => {
-    const currentPageNumber = $('div.pagination li.active').text().trim();
+    const currentPageNumber = $('div.pagination li.active').first().text().trim();
 
     log.info(`Processing page --- ${currentPageNumber || 1}, url: ${request.url}`);
 
-    const routeTable = $('table.routetable');
-    const routes = $(routeTable).find('tr[id][data-nid][data-nodename]');
+    const routes = $('tr[id][data-nid][data-nodename]');
 
     log.info(`Found ${routes.length} routes on page --- ${currentPageNumber || 1}, url: ${request.url}`);
 
