@@ -10,6 +10,52 @@
             "editor": "textfield",
             "example": "Czechia"
         },
+        "routeStyle": {
+            "title": "Route style",
+            "type": "string",
+            "description": "Select the route style",
+            "editor": "select",
+            "enum": [
+                "boulder",
+                "trad",
+                "sport"
+            ],
+            "enumTitles": [
+                "Boulder",
+                "Trad",
+                "Sport"
+            ]
+        },
+        "gradingSystem": {
+            "sectionCaption": "Route grade information",
+            "sectionDescription": "In this section, you are able to select the grading system and min/max route difficulties, if you select the French one, min and max route difficulties should be entered in format: {number}{letter}{?+}, example: 6a+, the range of grades can be from 1a to 9c. If you select the UIAA option, the input format is: {number}{?-/+}, example: 7-, the range is from 1- to 12+",
+            "title": "Grading system",
+            "type": "string",
+            "description": "Route grading system",
+            "editor": "select",
+            "enum": [
+                "FR",
+                "UIAA"
+            ],
+            "enumTitles": [
+                "French",
+                "UIAA"
+            ]
+        },
+        "minDifficulty": {
+            "title": "Min. route difficulty",
+            "type": "string",
+            "editor": "textfield",
+            "description": "Minimal route difficulty",
+            "example": "5- / 5b"
+        },
+        "maxDifficulty": {
+            "title": "Max. route difficulty",
+            "type": "string",
+            "editor": "textfield",
+            "description": "Maximal route difficulty",
+            "example": "6+ / 6c"
+        },
         "maxRequestsPerCrawl": {
             "title": "Max Requests per Crawl",
             "type": "integer",

@@ -2,70 +2,66 @@ import { Actor, log } from 'apify'
 import { createCheerioRouter } from "crawlee";
 
 import { BASE_THE_CRAG_URL, Routes } from "./constants.js";
-import type { AreaPageData, RouteData } from './types.js';
+import type { /* AreaPageData, */ AreasSearchPageData, RouteData } from './types.js';
+import { constructGradesFilters, constructRouteStyleFilters } from './utils.js';
 
 export const router = createCheerioRouter();
 
-router.addHandler(Routes.SEARCH_PAGE, async ({ $, crawler }) => {
-    const climbingAreas = $('a.card-crag');
+router.addHandler<AreasSearchPageData>(Routes.AREAS_SEARCH_PAGE, async ({ $, crawler, request }) => {
+    const climbingArea = $('a.card-crag');
+    const { minDifficulty, maxDifficulty, gradingSystem, routeStyle } = request.userData;
 
-    log.info(`Found ${climbingAreas.length} climbing areas during initial search`);
+    const mostRelevantClimbingAreaUrl = climbingArea.first().attr('href');
 
-    for (const climbingArea of climbingAreas) {
-        const areaUrl = $(climbingArea).attr('href');
-
-        await crawler.addRequests([{
-            url: `${BASE_THE_CRAG_URL}${areaUrl}`,
-            label: Routes.AREA_PAGE,
-            userData: {
-                location: []
-            }
-        }])
-    }
+    await crawler.addRequests([{
+        url: `${BASE_THE_CRAG_URL}${mostRelevantClimbingAreaUrl}/routes${constructGradesFilters(gradingSystem, minDifficulty, maxDifficulty)}${constructRouteStyleFilters(routeStyle)}`,
+        label: Routes.FILTERED_ROUTES_PAGE,
+    }])
 })
 
-router.addHandler<AreaPageData>(Routes.AREA_PAGE, async ({ $, request, crawler }) => {
-    const { location: previousLocation } = request.userData;
-    const areaPageTitle = $('div.regions__title .heading__t').text().trim();
+router.addHandler(Routes.FILTERED_ROUTES_PAGE, async ({ $, crawler, request }) => {
+    const currentPageNumber = $('div.pagination li.active').text().trim();
 
-    const currentLocation = [...previousLocation, areaPageTitle];
+    log.info(`Processing page --- ${currentPageNumber || 1}, url: ${request.url}`);
 
-    const routes = $('div.route:not(div.route.header)');
-    log.info(`Found ${routes.length} climbing routes during area search`);
+    const routeTable = $('table.routetable');
+    const routes = $(routeTable).find('tr[id][data-nid][data-nodename]');
+
+    log.info(`Found ${routes.length} routes on page --- ${currentPageNumber || 1}, url: ${request.url}`);
 
     const routesData: RouteData[] = [];
-
     for (const route of routes) {
-        // We might go further here to each route's page, but for now, info from area/cliff page is enough
         const routeEl = $(route);
 
-        const title = routeEl.find('div.title > span.name').text().trim();
-        const difficulty = routeEl.find('div.title > span.r-grade').text().trim();
-        const type = routeEl.find('div.title > span.flags').text().trim();
-        const description = routeEl.find('div.desc').text().trim();
-        const location = currentLocation.join(' > ');
+        const routeLinkElement = routeEl.find('td.rt_name > span.route > a');
+
+        const title = routeLinkElement.text().trim();
+        const location = routeLinkElement.attr('title')?.trim().replace(/\u203A/g, '>').replace(/\u00a0/g, ' ') || '';
+        const routeUrl = `${BASE_THE_CRAG_URL}${routeLinkElement.attr('href')}`;
+        const difficulty = routeEl.find('td').first().text().trim();
+        const type = routeEl.find('span.tags').text().trim();
+        const description = routeEl.find('td.rt_name > div.markdown > p').text().trim();
 
         routesData.push({
             title,
+            location,
+            routeUrl,
             difficulty,
             type,
-            description,
-            location
+            description
         })
     }
 
-    await Actor.pushData<RouteData>(routesData);
+    await Actor.pushData<RouteData[]>(routesData);
 
-    const areas = $('div[class="area"]');
-    log.info(`Found ${areas.length} climbing areas during area search`);
+    const nextButton = $('div.pagination li.next a');
 
-    for (const area of areas) {
-        const areaUrl = $(area).find('div.name > a').attr('href');
+    if (nextButton && nextButton.attr('href')) {
+        const nextPageUrl = nextButton.attr('href');
 
         await crawler.addRequests([{
-            url: `${BASE_THE_CRAG_URL}${areaUrl}`,
-            label: Routes.AREA_PAGE,
-            userData: { location: currentLocation },
-        }]);
+            url: nextPageUrl,
+            label: Routes.FILTERED_ROUTES_PAGE,
+        }])
     }
 })
