@@ -60,7 +60,7 @@ router.addHandler(Routes.FILTERED_ROUTES_PAGE, async ({ $, crawler, request }) =
         const nextPageUrl = nextButton.attr('href');
 
         await crawler.addRequests([{
-            url: nextPageUrl,
+            url: `${BASE_THE_CRAG_URL}${nextPageUrl}`,
             label: Routes.FILTERED_ROUTES_PAGE,
         }])
     }

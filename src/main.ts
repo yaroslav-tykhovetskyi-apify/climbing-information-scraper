@@ -17,9 +17,9 @@ if (!input) {
 }
 
 const { areaQuery, maxRequestsPerCrawl, gradingSystem, routeStyle } = input;
-const { minDifficulty, maxDifficulty } = gradingSystem ? await validateGradeSystemAndGradesInput(gradingSystem, input.minDifficulty, input.maxDifficulty) : { minDifficulty: '', maxDifficulty: '' };
+const { minDifficulty, maxDifficulty } = gradingSystem ? await validateGradeSystemAndGradesInput(gradingSystem, input?.minDifficulty, input?.maxDifficulty) : { minDifficulty: '', maxDifficulty: '' };
 
-log.info('input --- ', input);
+log.info('Received input --- ', input);
 
 const proxyConfiguration = await Actor.createProxyConfiguration();
 

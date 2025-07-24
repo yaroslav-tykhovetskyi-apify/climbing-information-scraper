@@ -12,7 +12,7 @@ const validatePairOfGradesUsingRegex = async (value1: string, value2: string, re
     }
 }
 
-export const validateGradeSystemAndGradesInput = async (gradingSystem: RouteGradingSystem, minDifficulty: string, maxDifficulty: string): Promise<{ minDifficulty: string, maxDifficulty: string }> => {
+export const validateGradeSystemAndGradesInput = async (gradingSystem: RouteGradingSystem, minDifficulty: string | undefined, maxDifficulty: string | undefined): Promise<{ minDifficulty: string, maxDifficulty: string }> => {
     const UIAAGradingSystemRegex = /^[1-9][+-]?$/;
     const frenchGradingSystemRegex = /^[1-9][abc][+]?$/
 

@@ -2,10 +2,10 @@ import type { RouteGradingSystem, RouteStyle } from "./constants.js";
 
 export interface ActorInput {
     areaQuery: string;
-    routeStyle: RouteStyle | undefined;
-    gradingSystem: RouteGradingSystem | undefined;
-    minDifficulty: string;
-    maxDifficulty: string;
+    routeStyle?: RouteStyle;
+    gradingSystem?: RouteGradingSystem;
+    minDifficulty?: string;
+    maxDifficulty?: string;
     maxRequestsPerCrawl: number;
 }
 
