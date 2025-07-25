@@ -2,7 +2,7 @@
 	"actorSpecification": 1,
 	"name": "climbing-information-scraper",
 	"title": "Climbing information scraper",
-	"description": "Actor meant to make the task of finding climbing sites easier.",
+	"description": "Actor meant to make the task of finding climbing routes easier.",
 	"version": "0.0",
 	"meta": {
 		"templateId": "ts-crawlee-cheerio"

@@ -1,20 +1,25 @@
-import type { RouteGradingSystem, RouteStyle } from "./constants.js";
+import type { RouteGradingSystem, RouteLength, RouteSetting, RouteStyle } from "./constants.js";
 
 export interface ActorInput {
     areaQuery: string;
     routeStyle?: RouteStyle;
+    routeSetting?: RouteSetting;
+    routeLength?: RouteLength;
     gradingSystem?: RouteGradingSystem;
     minDifficulty?: string;
     maxDifficulty?: string;
     maxRequestsPerCrawl: number;
 }
 
-export interface AreasSearchPageData {
+export interface AreasSearchUserData {
     minDifficulty: string;
     maxDifficulty: string;
-    gradingSystem: RouteGradingSystem | undefined;
-    routeStyle: RouteStyle | undefined;
+    gradingSystem?: RouteGradingSystem;
+    routeStyle?: RouteStyle;
+    routeSetting?: RouteSetting;
+    routeLength?: RouteLength
 }
+
 export interface RouteData {
     title: string;
     difficulty: string;
@@ -23,7 +28,3 @@ export interface RouteData {
     location: string;
     routeUrl: string;
 }
-
-// export interface AreaPageData {
-//     location: string[];
-// }

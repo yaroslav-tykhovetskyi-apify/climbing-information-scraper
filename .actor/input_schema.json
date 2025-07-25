@@ -11,6 +11,8 @@
             "example": "Czechia"
         },
         "routeStyle": {
+            "sectionCaption": "Optional route filters section",
+            "sectionDescription": "In this section, you are able to select filters for the routes",
             "title": "Route style",
             "type": "string",
             "description": "Select the route style",
@@ -24,6 +26,42 @@
                 "Boulder",
                 "Trad",
                 "Sport"
+            ]
+        },
+        "routeSetting": {
+            "title": "Route setting",
+            "type": "string",
+            "description": "Select the route setting",
+            "editor": "select",
+            "enum": [
+                "natural",
+                "artificial"
+            ],
+            "enumTitles": [
+                "Natural",
+                "Artificial"
+            ]
+        },
+        "routeLength": {
+            "title": "Height / length",
+            "type": "string",
+            "description": "Route height/length",
+            "editor": "select",
+            "enum": [
+                "0+5",
+                "5+10",
+                "10+20",
+                "20+45",
+                "45+100",
+                "100+1000"
+            ],
+            "enumTitles": [
+                "0 to 5m",
+                "5 to 10m",
+                "10 to 20m",
+                "20 to 45m",
+                "45 to 100m",
+                "100m to 1km"
             ]
         },
         "gradingSystem": {

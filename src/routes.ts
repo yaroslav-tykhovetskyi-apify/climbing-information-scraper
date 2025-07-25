@@ -2,19 +2,18 @@ import { Actor, log } from 'apify'
 import { createCheerioRouter } from "crawlee";
 
 import { BASE_THE_CRAG_URL, Routes } from "./constants.js";
-import type { /* AreaPageData, */ AreasSearchPageData, RouteData } from './types.js';
-import { constructGradesFilters, constructRouteStyleFilters } from './utils.js';
+import type { AreasSearchUserData, RouteData } from './types.js';
+import { constructFilteredRoutesUrl } from './utils/index.js';
 
 export const router = createCheerioRouter();
 
-router.addHandler<AreasSearchPageData>(Routes.AREAS_SEARCH_PAGE, async ({ $, crawler, request }) => {
+router.addHandler<AreasSearchUserData>(Routes.AREAS_SEARCH_PAGE, async ({ $, crawler, request }) => {
     const climbingArea = $('a.card-crag');
-    const { minDifficulty, maxDifficulty, gradingSystem, routeStyle } = request.userData;
 
-    const mostRelevantClimbingAreaUrl = climbingArea.first().attr('href');
+    const mostRelevantClimbingAreaUrl = `${BASE_THE_CRAG_URL}${climbingArea.first().attr('href')}`;
 
     await crawler.addRequests([{
-        url: `${BASE_THE_CRAG_URL}${mostRelevantClimbingAreaUrl}/routes${constructGradesFilters(gradingSystem, minDifficulty, maxDifficulty)}${constructRouteStyleFilters(routeStyle)}`,
+        url: constructFilteredRoutesUrl(mostRelevantClimbingAreaUrl, request.userData),
         label: Routes.FILTERED_ROUTES_PAGE,
     }])
 })

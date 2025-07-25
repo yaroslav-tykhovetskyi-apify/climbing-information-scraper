@@ -3,8 +3,8 @@ import { CheerioCrawler } from 'crawlee';
 
 import { BASE_THE_CRAG_URL, Routes } from './constants.js';
 import { router } from './routes.js';
-import type { ActorInput } from './types.js';
-import { validateGradeSystemAndGradesInput } from './utils.js';
+import type { ActorInput, AreasSearchUserData } from './types.js';
+import { validateGradeSystemAndGradesInput } from './utils/index.js';
 
 log.info('Starting the actor.')
 await Actor.init();
@@ -16,7 +16,7 @@ if (!input) {
     throw new Error('Received invalid input.');
 }
 
-const { areaQuery, maxRequestsPerCrawl, gradingSystem, routeStyle } = input;
+const { areaQuery, maxRequestsPerCrawl, gradingSystem, routeStyle, routeLength, routeSetting } = input;
 const { minDifficulty, maxDifficulty } = gradingSystem ? await validateGradeSystemAndGradesInput(gradingSystem, input?.minDifficulty, input?.maxDifficulty) : { minDifficulty: '', maxDifficulty: '' };
 
 log.info('Received input --- ', input);
@@ -29,15 +29,19 @@ const crawler = new CheerioCrawler({
     maxRequestsPerCrawl,
 });
 
+const userData: AreasSearchUserData = {
+    minDifficulty,
+    maxDifficulty,
+    gradingSystem,
+    routeStyle,
+    routeLength,
+    routeSetting,
+}
+
 await crawler.addRequests([{
     url: `${BASE_THE_CRAG_URL}/en/climbing/europe/areas/search/${areaQuery}/?sortby=kudos,desc`,
     label: Routes.AREAS_SEARCH_PAGE,
-    userData: {
-        minDifficulty,
-        maxDifficulty,
-        gradingSystem,
-        routeStyle
-    }
+    userData
 }])
 await crawler.run();
 
