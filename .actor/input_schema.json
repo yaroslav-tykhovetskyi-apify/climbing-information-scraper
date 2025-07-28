@@ -19,7 +19,8 @@
             "description": "Select the route style",
             "editor": "select",
             "enum": ["", "boulder", "trad", "sport"],
-            "enumTitles": ["Empty", "Boulder", "Trad", "Sport"]
+            "enumTitles": ["Empty", "Boulder", "Trad", "Sport"],
+            "default": ""
         },
         "routeSetting": {
             "title": "Route setting",
@@ -27,7 +28,8 @@
             "description": "Select the route setting",
             "editor": "select",
             "enum": ["", "natural", "artificial"],
-            "enumTitles": ["Empty", "Natural", "Artificial"]
+            "enumTitles": ["Empty", "Natural", "Artificial"],
+            "default": ""
         },
         "routeLength": {
             "title": "Height / length",
@@ -35,7 +37,8 @@
             "description": "Route height/length",
             "editor": "select",
             "enum": ["", "0+5", "5+10", "10+20", "20+45", "45+100", "100+1000"],
-            "enumTitles": ["Empty", "0 to 5m", "5 to 10m", "10 to 20m", "20 to 45m", "45 to 100m", "100m to 1km"]
+            "enumTitles": ["Empty", "0 to 5m", "5 to 10m", "10 to 20m", "20 to 45m", "45 to 100m", "100m to 1km"],
+            "default": ""
         },
         "gradingSystem": {
             "sectionCaption": "Route grade information",
@@ -45,7 +48,8 @@
             "description": "Route grading system",
             "editor": "select",
             "enum": ["", "FR", "UIAA"],
-            "enumTitles": ["Empty", "French", "UIAA"]
+            "enumTitles": ["Empty", "French", "UIAA"],
+            "default": ""
         },
         "minDifficulty": {
             "title": "Min. route difficulty",
