@@ -1,4 +1,4 @@
-import type { RouteGradingSystem, RouteLength, RouteSetting, RouteStyle } from "./constants.js";
+import type { RouteGradingSystem, RouteLength, RouteSetting, RouteStyle } from './constants.js';
 
 export interface ActorInput {
     areaQuery: string;
@@ -17,7 +17,7 @@ export interface AreasSearchUserData {
     gradingSystem?: RouteGradingSystem;
     routeStyle?: RouteStyle;
     routeSetting?: RouteSetting;
-    routeLength?: RouteLength
+    routeLength?: RouteLength;
 }
 
 export interface RouteData {
