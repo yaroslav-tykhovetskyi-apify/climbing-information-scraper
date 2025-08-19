@@ -8,5 +8,49 @@
         "templateId": "ts-crawlee-cheerio"
     },
     "input": "./input_schema.json",
-    "dockerfile": "../Dockerfile"
+    "dockerfile": "../Dockerfile",
+    "storages": {
+        "dataset": {
+            "actorSpecification": 1,
+            "title": "Climbing information scraper",
+            "views": {
+                "overview": {
+                    "title": "Overview",
+                    "description": "",
+                    "transformation": {
+                        "fields": ["title", "difficulty", "type", "description", "location", "routeUrl"]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "title": {
+                                "label": "Route title",
+                                "format": "text"
+                            },
+                            "difficulty": {
+                                "label": "Difficulty",
+                                "format": "text"
+                            },
+                            "type": {
+                                "label": "Type",
+                                "format": "text"
+                            },
+                            "description": {
+                                "label": "Description",
+                                "format": "text"
+                            },
+                            "location": {
+                                "label": "Location",
+                                "format": "text"
+                            },
+                            "routeUrl": {
+                                "label": "URL",
+                                "format": "text"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
