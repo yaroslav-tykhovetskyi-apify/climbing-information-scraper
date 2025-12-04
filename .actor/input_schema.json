@@ -78,6 +78,9 @@
             "description": "This section is responsible for Google AI Mode settings",
             "type": "object",
             "editor": "schemaBased",
+            "prefill": {
+                "aiMode": "aiModeOff"
+            },
             "default": {
                 "aiMode": "aiModeOff"
             },
