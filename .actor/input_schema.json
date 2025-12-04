@@ -83,6 +83,7 @@
                 "second": false
             },
             "prefill": {
+
                 "second": false
             },
             "properties": {
@@ -100,12 +101,26 @@
                         "AI Mode off",
                         "AI Mode + Search Results",
                         "AI Mode only"
-                    ]                
+                    ]          
                 },
                 "second": {
                     "title": "Second Option",
                     "type": "boolean",
                     "description": "Enable second option"
+                }
+            }
+        },
+        "third": {
+            "title": "Test title",
+            "type": "object",
+            "sectionDescription": "Test section description",
+            "description": "Test description",
+            "editor": "schemaBased",
+            "properties": {
+                "thirdFirst": {
+                    "title": "Third First Option",
+                    "type": "boolean",
+                    "description": "Enable third first option"
                 }
             }
         }
