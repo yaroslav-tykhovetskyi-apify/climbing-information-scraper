@@ -142,6 +142,12 @@
                 "key1"
             ],
             "additionalProperties": true
+        },
+        "standardarray2": {
+            "title": "Key value",
+            "type": "array",
+            "description": "URLs to start with",
+            "editor": "keyValue"
         }
     },
     "required": ["areaQuery"]
