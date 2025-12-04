@@ -71,7 +71,7 @@
             "description": "Maximum number of requests that can be made by this crawler.",
             "default": 100
         },
-        "stringArray2": {
+        "aiMode": {
             "sectionCaption": "AI Section",
             "sectionDescription": "AI Section description",
             "title": "Google AI Mode",
@@ -97,27 +97,22 @@
                 }
             }
         },
-        "stringArray3": {
-            "title": "Google AI Mode",
-            "description": "This section is responsible for Google AI Mode settings",
+        "perplexitySearch": {
+            "title": "Perplexity AI search",
+            "description": "Enable Perplexity to retrieve AI-generated answers and citations using the Sonar model. This feature is designed for cross-platform analysis, allowing you to directly compare Google AI Mode results against Perplexity’s perspective to identify narrative differences and coverage gaps. Note: An additional fee applies per result when this feature is active. Please refer to the Pricing tab for your specific rate.",
             "type": "object",
             "editor": "schemaBased",
+            "default": {
+                "enablePerplexity": false
+            },
+            "prefill": {
+                "enablePerplexity": false
+            },
             "properties": {
-                "aiMode": {
-                    "title": "Google AI Mode",
-                    "description": "Enable scraping of Google's AI Mode to perform Answer Engine Optimization (AEO), GEO targeting, track brand visibility, and analyze competitors.",
-                    "enum": [
-                        "aiModeOff",
-                        "aiModeWithSearchResults",
-                        "aiModeOnly"
-                    ],
-                    "enumTitles": [
-                        "AI Mode off",
-                        "AI Mode + Search Results",
-                        "AI Mode only"
-                    ],
-                    "type": "string",
-                    "editor": "select"
+                "enablePerplexity": {
+                    "title": "Enable Perplexity AI",
+                    "description": "Fetches an AI answer from Perplexity for every query to compare against Google.",
+                    "type": "boolean"
                 }
             }
         },
