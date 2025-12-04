@@ -71,58 +71,77 @@
             "description": "Maximum number of requests that can be made by this crawler.",
             "default": 100
         },
-        "testThing": {
-            "sectionCaption": "Test caption",
-            "sectionDescription": "Test section description",
-            "title": "Test title",
+        "subschemaObject2": {
+            "sectionCaption": "Trying this in section",
+            "sectionDescription": "This is section description",
+            "title": "Object with sub-schema",
             "type": "object",
-            "description": "Test description",
+            "description": "This is object field with sub-schema defined and schemaBased editor so each sub-field is rendered",
             "editor": "schemaBased",
             "default": {
-                "first": "aiModeOff",
-                "second": false
+                "key1": "default value"
             },
             "prefill": {
-
-                "second": false
+                "key1": "Prefill value"
             },
             "properties": {
-                "first": {
-                    "title": "Enable First",
+                "key1": {
+                    "title": "Key1 string sub-property",
                     "type": "string",
-                    "description": "Enable first option",
-                    "editor": "select",
-                    "enum": [
-                        "aiModeOff",
-                        "aiModeWithSearchResults",
-                        "aiModeOnly"
-                    ],
-                    "enumTitles": [
-                        "AI Mode off",
-                        "AI Mode + Search Results",
-                        "AI Mode only"
-                    ]          
+                    "description": "This is string sub-property with textfield editor",
+                    "editor": "textfield"
                 },
-                "second": {
-                    "title": "Second Option",
-                    "type": "boolean",
-                    "description": "Enable second option"
+                "key2": {
+                    "title": "Key2 integer sub-property",
+                    "type": "integer",
+                    "description": "This is integer sub-property with number editor",
+                    "editor": "number"
+                },
+                "key3": {
+                    "title": "Key3 object sub-property",
+                    "type": "object",
+                    "description": "This is object sub-property with json editor. It has also sub-schema defined",
+                    "editor": "json",
+                    "properties": {
+                        "key3-1": {
+                            "title": "key1 sub-property",
+                            "type": "string",
+                            "description": "This is sub-property"
+                        },
+                        "key3-2": {
+                            "title": "key2 sub-property",
+                            "type": "string",
+                            "description": "This is sub-property"
+                        }
+                    }
+                },
+                "key.with.dot": {
+                    "title": "Key.with.dot object sub-property",
+                    "type": "object",
+                    "description": "This is another object sub-property but it has dot in it's key.",
+                    "editor": "json",
+                    "properties": {
+                        "key-1": {
+                            "title": "key1 sub-property",
+                            "type": "string",
+                            "description": "This is sub-property"
+                        },
+                        "key-2": {
+                            "title": "key2 sub-property",
+                            "type": "string",
+                            "description": "This is sub-property"
+                        }
+                    },
+                    "required": [
+                        "key3-2"
+                    ],
+                    "additionalProperties": false
                 }
-            }
-        },
-        "third": {
-            "title": "Test title",
-            "type": "object",
-            "sectionDescription": "Test section description",
-            "description": "Test description",
-            "editor": "schemaBased",
-            "properties": {
-                "thirdFirst": {
-                    "title": "Third First Option",
-                    "type": "boolean",
-                    "description": "Enable third first option"
-                }
-            }
+            },
+            "required": [
+                "key1"
+            ],
+            "additionalProperties": true
         }
     },
     "required": ["areaQuery"]
