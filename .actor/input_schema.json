@@ -89,11 +89,23 @@
             "properties": {
                 "first": {
                     "title": "Enable First",
-                    "type": "boolean",
-                    "description": "Enable first option"
+                    "type": "string",
+                    "description": "Enable first option",
+                    "editor": "select",
+                    "enum": [
+                        "aiModeOff",
+                        "aiModeWithSearchResults",
+                        "aiModeOnly"
+                    ],
+                    "enumTitles": [
+                        "AI Mode off",
+                        "AI Mode + Search Results",
+                        "AI Mode only"
+                    ],
+                    "default": "aiModeOff"
                 },
                 "second": {
-                    "title": "Enable Second",
+                    "title": "Second Option",
                     "type": "boolean",
                     "description": "Enable second option"
                 }
