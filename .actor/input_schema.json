@@ -71,6 +71,58 @@
             "description": "Maximum number of requests that can be made by this crawler.",
             "default": 100
         },
+        "stringArray2": {
+            "sectionCaption": "AI Section",
+            "sectionDescription": "AI Section description",
+            "title": "Google AI Mode",
+            "description": "This section is responsible for Google AI Mode settings",
+            "type": "object",
+            "editor": "schemaBased",
+            "properties": {
+                "aiMode": {
+                    "title": "Google AI Mode",
+                    "description": "Enable scraping of Google's AI Mode to perform Answer Engine Optimization (AEO), GEO targeting, track brand visibility, and analyze competitors.",
+                    "enum": [
+                        "aiModeOff",
+                        "aiModeWithSearchResults",
+                        "aiModeOnly"
+                    ],
+                    "enumTitles": [
+                        "AI Mode off",
+                        "AI Mode + Search Results",
+                        "AI Mode only"
+                    ],
+                    "type": "string",
+                    "editor": "select"                
+                }
+            }
+        },
+        "stringArray3": {
+            "sectionCaption": "AI Section",
+            "sectionDescription": "AI Section description",
+            "title": "Google AI Mode",
+            "description": "This section is responsible for Google AI Mode settings",
+            "type": "object",
+            "editor": "schemaBased",
+            "properties": {
+                "aiMode": {
+                    "title": "Google AI Mode",
+                    "description": "Enable scraping of Google's AI Mode to perform Answer Engine Optimization (AEO), GEO targeting, track brand visibility, and analyze competitors.",
+                    "enum": [
+                        "aiModeOff",
+                        "aiModeWithSearchResults",
+                        "aiModeOnly"
+                    ],
+                    "enumTitles": [
+                        "AI Mode off",
+                        "AI Mode + Search Results",
+                        "AI Mode only"
+                    ],
+                    "type": "string",
+                    "editor": "select"
+                }
+            }
+        },
         "subschemaObject2": {
             "sectionCaption": "Trying this in section",
             "sectionDescription": "This is section description",
