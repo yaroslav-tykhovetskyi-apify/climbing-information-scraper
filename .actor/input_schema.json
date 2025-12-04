@@ -70,6 +70,34 @@
             "type": "integer",
             "description": "Maximum number of requests that can be made by this crawler.",
             "default": 100
+        },
+        "testThing": {
+            "sectionCaption": "Test caption",
+            "sectionDescription": "Test section description",
+            "title": "Test title",
+            "type": "object",
+            "description": "Test description",
+            "editor": "schemaBased",
+            "default": {
+                "first": false,
+                "second": false
+            },
+            "prefill": {
+                "first": false,
+                "second": false
+            },
+            "properties": {
+                "first": {
+                    "title": "Enable First",
+                    "type": "boolean",
+                    "description": "Enable first option"
+                },
+                "second": {
+                    "title": "Enable Second",
+                    "type": "boolean",
+                    "description": "Enable second option"
+                }
+            }
         }
     },
     "required": ["areaQuery"]
