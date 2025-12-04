@@ -98,8 +98,6 @@
             }
         },
         "stringArray3": {
-            "sectionCaption": "AI Section",
-            "sectionDescription": "AI Section description",
             "title": "Google AI Mode",
             "description": "This section is responsible for Google AI Mode settings",
             "type": "object",
