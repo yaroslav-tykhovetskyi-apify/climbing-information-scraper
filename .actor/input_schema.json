@@ -79,7 +79,7 @@
             "description": "Test description",
             "editor": "schemaBased",
             "default": {
-                "first": false,
+                "first": "aiModeOff",
                 "second": false
             },
             "prefill": {
@@ -101,8 +101,7 @@
                         "AI Mode off",
                         "AI Mode + Search Results",
                         "AI Mode only"
-                    ],
-                    "default": "aiModeOff"
+                    ]                
                 },
                 "second": {
                     "title": "Second Option",
