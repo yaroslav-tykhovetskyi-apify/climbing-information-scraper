@@ -71,16 +71,13 @@
             "description": "Maximum number of requests that can be made by this crawler.",
             "default": 100
         },
-        "aiMode": {
+       "aiMode": {
             "sectionCaption": "AI Section",
             "sectionDescription": "AI Section description",
             "title": "Google AI Mode",
             "description": "This section is responsible for Google AI Mode settings",
             "type": "object",
             "editor": "schemaBased",
-            "default": {
-                "aiMode": "aiModeOff"
-            },
             "properties": {
                 "aiMode": {
                     "title": "Google AI Mode",
@@ -96,7 +93,8 @@
                         "AI Mode only"
                     ],
                     "type": "string",
-                    "editor": "select"                
+                    "editor": "select",
+                    "default": "aiModeOff"
                 }
             }
         },
