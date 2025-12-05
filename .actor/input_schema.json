@@ -72,7 +72,7 @@
             "default": 100
         },
        "aiMode": {
-            "sectionCaption": "AI Section",
+            "sectionCaption": "AI & Generative Search",
             "title": "Add-on: Google AI Mode",
             "description": "In this section, you can enable scraping of Google’s AI Mode to generate comprehensive, structured responses. This is especially valuable for use cases like Answer Engine Optimization (AEO), GEO targeting, brand visibility tracking, and competitive analysis. Depending on your needs, you can choose to retrieve AI Mode results either alongside organic search results or independently.<br><br><b>An additional fee applies when Google AI Mode is enabled to process a query. Pricing starts at $0.005 per result ($5.00 per 1,000 results), with significant discounts available on higher-tier plans. Please see the Pricing tab for your exact rate.",
             "type": "object",
