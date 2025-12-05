@@ -74,8 +74,8 @@
        "aiMode": {
             "sectionCaption": "AI Section",
             "sectionDescription": "AI Section description",
-            "title": "Google AI Mode",
-            "description": "This section is responsible for Google AI Mode settings",
+            "title": "Add-on: Google AI Mode",
+            "description": "In this section, you can enable scraping of Google’s AI Mode to generate comprehensive, structured responses. This is especially valuable for use cases like Answer Engine Optimization (AEO), GEO targeting, brand visibility tracking, and competitive analysis. Depending on your needs, you can choose to retrieve AI Mode results either alongside organic search results or independently.<br><br><b>An additional fee applies when Google AI Mode is enabled to process a query. Pricing starts at $0.005 per result ($5.00 per 1,000 results), with significant discounts available on higher-tier plans. Please see the Pricing tab for your exact rate.",
             "type": "object",
             "editor": "schemaBased",
             "properties": {
@@ -99,7 +99,7 @@
             }
         },
         "perplexitySearch": {
-            "title": "Perplexity AI search",
+            "title": "Add-on: Perplexity AI search",
             "description": "Enable Perplexity to retrieve AI-generated answers and citations using the Sonar model. This feature is designed for cross-platform analysis, allowing you to directly compare Google AI Mode results against Perplexity’s perspective to identify narrative differences and coverage gaps. Note: An additional fee applies per result when this feature is active. Please refer to the Pricing tab for your specific rate.",
             "type": "object",
             "editor": "schemaBased",
