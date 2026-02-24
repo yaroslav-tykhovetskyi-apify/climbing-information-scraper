@@ -11,8 +11,6 @@ await Actor.init();
 
 const input = (await Actor.getInput<ActorInput>())!;
 
-console.log('Input received:', input);
-
 const { areaQuery, maxRequestsPerCrawl, gradingSystem, routeStyle, routeLength, routeSetting } = input;
 const { minDifficulty, maxDifficulty } = gradingSystem
     ? await validateGradeSystemAndGradesInput(gradingSystem, input?.minDifficulty, input?.maxDifficulty)
