@@ -1,6 +1,7 @@
 import { Actor } from 'apify';
 
 import {
+    FRENCH_SYSTEM_DEFAULT_MAX_GRADE,
     FRENCH_SYSTEM_DEFAULT_MIN_GRADE,
     FRENCH_SYSTEM_GRADE_REGEX,
     RouteGradingSystem,
@@ -31,7 +32,7 @@ export const validateGradeSystemAndGradesInput = async (
             minDifficultyOrDefault =
                 minDifficulty && minDifficulty.length > 0 ? minDifficulty : FRENCH_SYSTEM_DEFAULT_MIN_GRADE;
             maxDifficultyOrDefault =
-                maxDifficulty && maxDifficulty.length > 0 ? maxDifficulty : FRENCH_SYSTEM_DEFAULT_MIN_GRADE;
+                maxDifficulty && maxDifficulty.length > 0 ? maxDifficulty : FRENCH_SYSTEM_DEFAULT_MAX_GRADE;
 
             await validatePairOfGradesUsingRegex(
                 minDifficultyOrDefault,

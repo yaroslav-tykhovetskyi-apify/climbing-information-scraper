@@ -1,2 +1,2 @@
-export { constructFilteredRoutesUrl } from './urlUtils.js';
-export { validateGradeSystemAndGradesInput } from './validationUtils.js';
+export { constructFilteredRoutesUrl } from './url-utils.js';
+export { validateGradeSystemAndGradesInput } from './validation-utils.js';

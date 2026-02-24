@@ -4,7 +4,7 @@ export const FRENCH_SYSTEM_GRADE_REGEX = /^[1-9][abc][+]?$/;
 export const FRENCH_SYSTEM_DEFAULT_MIN_GRADE = '1a';
 export const FRENCH_SYSTEM_DEFAULT_MAX_GRADE = '9c';
 
-export const UIAA_SYSTEM_GRADE_REGEX = /^[1-9][+-]?$/;
+export const UIAA_SYSTEM_GRADE_REGEX = /^(1[0-2]|[1-9])[+-]?$/;
 export const UIAA_SYSTEM_DEFAULT_MIN_GRADE = '1-';
 export const UIAA_SYSTEM_DEFAULT_MAX_GRADE = '12+';
 
